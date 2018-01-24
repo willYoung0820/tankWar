@@ -1,0 +1,146 @@
+tanks and bullets is Intersect?
+package com.iGeekHome.j2ee11_28Homework;
+
+import java.util.Scanner;
+
+import javax.xml.soap.SAAJResult;
+
+public class bullet
+{
+		private int x;
+		private int y;
+		private int width;
+		private int height;
+		public int getX()
+		{
+			return x;
+		}
+		public void setX(int x)
+		{
+			this.x = x;
+		}
+		public int getY()
+		{
+			return y;
+		}
+		public void setY(int y)
+		{
+			this.y = y;
+		}
+		public int getWidth()
+		{
+			return width;
+		}
+		public void setWidth(int width)
+		{
+			this.width = width;
+		}
+		public int getHeight()
+		{
+			return height;
+		}
+		public void setHeight(int height)
+		{
+			this.height = height;
+		}
+		public bullet(int x,int y,int width,int height){
+			this.x=x;
+			this.y=y;
+			this.width=width;
+			this.height=height;
+		}
+
+}
+
+
+package com.iGeekHome.j2ee11_28Homework;
+
+public class tank
+{
+	private int x;
+	private int y;
+	private int width;
+	private int height;
+	public int getX()
+	{
+		return x;
+	}
+	public void setX(int x)
+	{
+		this.x = x;
+	}
+	public int getY()
+	{
+		return y;
+	}
+	public void setY(int y)
+	{
+		this.y = y;
+	}
+	public int getWidth()
+	{
+		return width;
+	}
+	public void setWidth(int wdith)
+	{
+		this.width = wdith;
+	}
+	public int getHeight()
+	{
+		return height;
+	}
+	public void setHeight(int height)
+	{
+		this.height = height;
+	}
+	public tank(int x,int y,int width,int height){
+		this.height=height;
+		this.width=width;
+		this.y=y;
+		this.x=x;
+	}
+}
+
+
+
+package com.iGeekHome.j2ee11_28Homework;
+
+public class Intersect
+{
+public boolean isIntersect(tank tk,bullet bl){
+		
+		if((bl.getX()+bl.getWidth())<tk.getX()||bl.getX()>(tk.getX()+tk.getWidth())||bl.getY()>(tk.getY()+tk.getHeight())||(bl.getY()+bl.getHeight())<tk.getY()){
+			return false;
+	
+		}else
+			return true;
+		
+	}
+
+}
+
+
+
+package com.iGeekHome.j2ee11_28Homework;
+
+public class tankAndBulletTest{
+
+	public static void main(String[] args){
+		tank[] tanks = new tank[10];
+		bullet[] bullets = new bullet[10];
+		for (int i = 0; i < tanks.length; i++){
+			tanks[i] = new tank((int) (Math.random() * 100), (int) (Math.random() * 100), 8, 6);
+		}
+		for (int j = 0; j < bullets.length; j++){
+			bullets[j] = new bullet((int) (Math.random() * 100), (int) (Math.random() * 100), 8, 6);
+		}
+
+		Intersect is = new Intersect();
+		for (int m = 0; m < tanks.length; m++){
+			for (int n = 0; n < bullets.length; n++){
+				System.out.println("m:" + m + "/n:" + n + "/" + is.isIntersect(tanks[m], bullets[n]));
+			}
+		}
+	}
+
+}
